@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        unordered_map<int , int> countMap;
+        unordered_set<int>uniqueCounts;
+
+        for(int num:arr) {
+            countMap[num]++;
+        }
+
+        for(const auto& pair : countMap) {
+            if(uniqueCounts.count(pair.second) > 0) {
+                return false;
+            }
+            uniqueCounts.insert(pair.second);
+        }
+        return true;
+    }
+};
